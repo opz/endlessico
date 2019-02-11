@@ -32,7 +32,7 @@ module.exports = {
   contracts_build_directory: path.join(__dirname, "client/src/contracts"),
   mocha: {
     useColors: false
-  }
+  },
   networks: {
     test: {
       provider: function() {
