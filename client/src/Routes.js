@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import ReactGA from 'react-ga';
-import Layout from './Layout';
 import BuyTokens from './BuyTokens';
 
 const history = createHistory();
@@ -17,13 +16,8 @@ class Routes extends Component {
   }
 
   render() {
-    const { children } = this.props;
-
     return (
       <Router history={history}>
-        <Layout>
-          {children}
-        </Layout>
         <Route exact path="/" component={BuyTokens} />
       </Router>
     );

@@ -1,12 +1,13 @@
 import React from 'react';
-import { Container } from 'semantic-ui-react';
+import Navigation from './Navigation';
 
 export default props => {
-  const { children } = props;
+  const { web3, accounts, children } = props;
 
   return (
-    <Container>
+    <>
+      <Navigation title="Endless ICO" web3={web3} accounts={accounts} />
       {children}
-    </Container>
+    </>
   );
 };
