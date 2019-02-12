@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Routes from './Routes';
 
-import "./App.css";
+import 'semantic-ui-forest-themes/semantic.flatly.min.css';
+import './App.css';
 
 class App extends Component {
   render() {
