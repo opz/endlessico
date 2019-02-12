@@ -23,7 +23,7 @@ function withWeb3(WrappedComponent, requireAccounts=false) {
         const web3 = await getWeb3(requireAccounts);
 
         // Use web3 to get the user's accounts.
-        const accounts = await web3.eth.getAccounts();
+        const accounts = web3 && await web3.eth.getAccounts();
 
         this.setState({ web3, accounts });
       } catch (error) {

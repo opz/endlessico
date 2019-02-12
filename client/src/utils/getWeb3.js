@@ -20,23 +20,23 @@ const getWeb3 = async (requireAccounts, resolve, reject) => {
       console.log("Injected web3 detected.");
       resolve(web3);
     }
-  }
-
-  // Default provider when accounts are not required
-  let defaultNetwork;
-  if (process.env.NODE_ENV === 'production') {
-    defaultNetwork = process.env.REACT_APP_PROD_NETWORK;
   } else {
-    defaultNetwork = process.env.REACT_APP_DEV_NETWORK;
+    // Default provider when accounts are not required
+    let defaultNetwork;
+    if (process.env.NODE_ENV === 'production') {
+      defaultNetwork = process.env.REACT_APP_PROD_NETWORK;
+    } else {
+      defaultNetwork = process.env.REACT_APP_DEV_NETWORK;
+    }
+    const provider = new Web3.providers.HttpProvider(defaultNetwork);
+    const web3 = new Web3(provider);
+    console.log("No web3 instance injected, using default provider.");
+    resolve(web3);
   }
-  const provider = new Web3.providers.HttpProvider(defaultNetwork);
-  const web3 = new Web3(provider);
-  console.log("No web3 instance injected, using default provider.");
-  resolve(web3);
 }
 
 export default requireAccounts => {
-  new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     // Wait for loading completion to avoid race conditions with web3 injection timing.
     window.addEventListener("load", () => {
       getWeb3(requireAccounts, resolve, reject);
