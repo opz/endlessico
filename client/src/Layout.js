@@ -7,9 +7,10 @@ export default props => {
 
   return (
     <>
-      <Navigation title="Endless ICO" web3={web3} accounts={accounts} />
-      {children}
-      <Footer />
+      <Navigation title="Endless ICO" web3={web3} accounts={accounts}>
+        {children}
+        <Footer />
+      </Navigation>
     </>
   );
 };

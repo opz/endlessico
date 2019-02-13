@@ -29,44 +29,46 @@ class Navigation extends Component {
     const { visible } = this.state;
 
     return (
-      <Sidebar.Pushable>
-        <Sidebar as={Menu} animation="overlay" vertical visible={visible}>
-          <NetworkStatus web3={web3} />
-          <NavigationItems web3={web3} accounts={accounts} />
-        </Sidebar>
-        <Sidebar.Pusher onClick={this.onPusherClick} dimmed={visible}>
-          <Menu fixed="top">
-            <Menu.Item as={NavLink} exact to="/" header>
-              {title}
-            </Menu.Item>
-            <Responsive
-              as={Menu.Menu}
-              minWidth={Responsive.onlyTablet.minWidth}
-            >
-              <NetworkStatus web3={web3} />
-            </Responsive>
-            <Responsive
-              as={Menu.Menu}
-              position="right"
-              minWidth={Responsive.onlyTablet.minWidth}
-            >
-              <NavigationItems web3={web3} accounts={accounts} />
-            </Responsive>
-            <Responsive
-              {...Responsive.onlyMobile}
-              as={Menu.Menu}
-              position="right"
-            >
-              <Menu.Item onClick={this.onSidebarClick}>
-                <Icon name="sidebar" />
+      <div className="Navigation">
+        <Sidebar.Pushable>
+          <Sidebar as={Menu} animation="overlay" vertical visible={visible}>
+            <NetworkStatus web3={web3} />
+            <NavigationItems web3={web3} accounts={accounts} />
+          </Sidebar>
+          <Sidebar.Pusher onClick={this.onPusherClick} dimmed={visible}>
+            <Menu fixed="top">
+              <Menu.Item as={NavLink} exact to="/" header>
+                {title}
               </Menu.Item>
-            </Responsive>
-          </Menu>
-          <div className="SidebarPusherChildren">
-            {children}
-          </div>
-        </Sidebar.Pusher>
-      </Sidebar.Pushable>
+              <Responsive
+                as={Menu.Menu}
+                minWidth={Responsive.onlyTablet.minWidth}
+              >
+                <NetworkStatus web3={web3} />
+              </Responsive>
+              <Responsive
+                as={Menu.Menu}
+                position="right"
+                minWidth={Responsive.onlyTablet.minWidth}
+              >
+                <NavigationItems web3={web3} accounts={accounts} />
+              </Responsive>
+              <Responsive
+                {...Responsive.onlyMobile}
+                as={Menu.Menu}
+                position="right"
+              >
+                <Menu.Item onClick={this.onSidebarClick}>
+                  <Icon name="sidebar" />
+                </Menu.Item>
+              </Responsive>
+            </Menu>
+            <div className="SidebarPusherChildren">
+              {children}
+            </div>
+          </Sidebar.Pusher>
+        </Sidebar.Pushable>
+      </div>
     );
   }
 }
