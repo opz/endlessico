@@ -1,0 +1,20 @@
+.PageHeader {
+    background: url('background.jpg') center/cover no-repeat;
+    margin-bottom: 4rem;
+    padding: 10em 0;
+    height: 100vh;
+    border-bottom: 1px solid rgba(34,36,38,.1);
+}
+
+.PageHeader .ui.grid {
+    height: 100%;
+}
+
+.PageHeader h1.ui.header {
+    font-size: 6rem;
+    font-weight: 400;
+}
+
+.PageHeader h1.ui.header .sub.header {
+    font-size: 2rem;
+}
