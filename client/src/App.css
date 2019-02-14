@@ -1,0 +1,31 @@
+body {
+    color: #1d1b1b;
+}
+
+.primary.color {
+    color: #1d1b1b;
+}
+
+.secondary.color {
+    color: #ec4d37;
+}
+
+.ui.header {
+    color: #1d1b1b;
+}
+
+.title.ui.header {
+    letter-spacing: 0.15em;
+}
+
+.title.ui.center.aligned.header {
+    padding-left: 0.15em;
+}
+
+.title.ui.header .sub.header {
+    letter-spacing: normal;
+}
+
+.title.ui.center.aligned.header .sub.header {
+    margin-left: -0.375em;
+}
