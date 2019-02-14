@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Icon, Menu, Responsive, Sidebar } from 'semantic-ui-react';
+import { Icon, Image, Menu, Responsive, Sidebar } from 'semantic-ui-react';
 import NavigationItems from './NavigationItems';
 import NetworkStatus from './NetworkStatus';
 
@@ -25,7 +25,7 @@ class Navigation extends Component {
   }
 
   render() {
-    const { web3, accounts, title, children } = this.props;
+    const { web3, accounts, logo, children } = this.props;
     const { visible } = this.state;
 
     return (
@@ -38,7 +38,7 @@ class Navigation extends Component {
           <Sidebar.Pusher onClick={this.onPusherClick} dimmed={visible}>
             <Menu fixed="top">
               <Menu.Item as={NavLink} exact to="/" header>
-                {title}
+                <Image src={logo} />
               </Menu.Item>
               <Responsive
                 as={Menu.Menu}

@@ -1,3 +1,22 @@
 .Navigation .ui.menu {
-    background: transparent;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(34,36,38,.1);
+}
+
+.Navigation .ui.menu .item {
+    color: #838187;
+}
+
+.Navigation .ui.menu .active.item {
+    background: #dddddd;
+    color: #443f54;
+}
+
+.Navigation .ui.menu .active.item:hover {
+    background: #cccccc;
+    color: #3b3749;
+}
+
+.Navigation .ui.menu .ui.image {
+    height: 1.93333333em;
 }
