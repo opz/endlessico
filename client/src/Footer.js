@@ -20,8 +20,8 @@ export default () => {
         <Container>
           <Grid stackable relaxed>
             <Grid.Row columns={3} divided>
-              <Grid.Column>
-                <Image src={logo} className="logo" />
+              <Grid.Column textAlign="center">
+                <Image src={logo} centered className="logo" />
                 <Header as="h3" className="title">
                   <span className="secondary color">&Sigma;</span>NDLESS
                   <Header.Subheader>The ICO that never ends</Header.Subheader>

@@ -6,6 +6,10 @@
     height: 2.5em;
 }
 
+.Footer h3.title.ui.header {
+    margin-top: 1em;
+}
+
 .Footer .ui.vertical.segment:first-child {
     border-top: 1px solid #ddd;
 }
