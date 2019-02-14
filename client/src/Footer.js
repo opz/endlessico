@@ -4,11 +4,14 @@ import {
   Container,
   Grid,
   Header,
+  Image,
   List,
   Segment
 } from 'semantic-ui-react';
 
 import './Footer.css';
+
+import logo from './EndlessICO.svg';
 
 export default () => {
   return (
@@ -17,7 +20,12 @@ export default () => {
         <Container>
           <Grid stackable relaxed>
             <Grid.Row columns={3} divided>
-              <Grid.Column stretched>
+              <Grid.Column>
+                <Image src={logo} className="logo" />
+                <Header as="h3" className="title">
+                  <span className="secondary color">&Sigma;</span>NDLESS
+                  <Header.Subheader>The ICO that never ends</Header.Subheader>
+                </Header>
               </Grid.Column>
               <Grid.Column>
                 <Header as="h3">Contact</Header>

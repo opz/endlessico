@@ -1,3 +1,11 @@
 .Footer {
     margin-top: 4rem;
 }
+
+.Footer .logo.ui.image {
+    height: 2.5em;
+}
+
+.Footer .ui.vertical.segment:first-child {
+    border-top: 1px solid #ddd;
+}
