@@ -29,3 +29,7 @@ body {
 .title.ui.center.aligned.header .sub.header {
     margin-left: -0.375em;
 }
+
+.ui.input .ui.label {
+    font-weight: 700;
+}
