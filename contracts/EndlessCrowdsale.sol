@@ -4,7 +4,6 @@ import 'openzeppelin-solidity/contracts/crowdsale/emission/MintedCrowdsale.sol';
 import 'openzeppelin-solidity/contracts/token/ERC20/IERC20.sol';
 import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 import 'openzeppelin-solidity/contracts/token/ERC20/SafeERC20.sol';
-import './EndlessToken.sol';
 
 contract EndlessCrowdsale is MintedCrowdsale {
     using SafeMath for uint256;
