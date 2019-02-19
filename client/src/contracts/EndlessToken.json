@@ -388,14 +388,14 @@
     "absolutePath": "/home/opz/Projects/endlessico/contracts/EndlessToken.sol",
     "exportedSymbols": {
       "EndlessToken": [
-        162
+        174
       ]
     },
-    "id": 163,
+    "id": 175,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 146,
+        "id": 158,
         "literals": [
           "solidity",
           "^",
@@ -408,10 +408,10 @@
       {
         "absolutePath": "openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol",
         "file": "openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol",
-        "id": 147,
+        "id": 159,
         "nodeType": "ImportDirective",
-        "scope": 163,
-        "sourceUnit": 1330,
+        "scope": 175,
+        "sourceUnit": 1342,
         "src": "25:71:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -419,10 +419,10 @@
       {
         "absolutePath": "openzeppelin-solidity/contracts/token/ERC20/ERC20Mintable.sol",
         "file": "openzeppelin-solidity/contracts/token/ERC20/ERC20Mintable.sol",
-        "id": 148,
+        "id": 160,
         "nodeType": "ImportDirective",
-        "scope": 163,
-        "sourceUnit": 1358,
+        "scope": 175,
+        "sourceUnit": 1370,
         "src": "97:71:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -433,17 +433,17 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 149,
+              "id": 161,
               "name": "ERC20Detailed",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1329,
+              "referencedDeclaration": 1341,
               "src": "195:13:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ERC20Detailed_$1329",
+                "typeIdentifier": "t_contract$_ERC20Detailed_$1341",
                 "typeString": "contract ERC20Detailed"
               }
             },
-            "id": 150,
+            "id": 162,
             "nodeType": "InheritanceSpecifier",
             "src": "195:13:1"
           },
@@ -451,52 +451,52 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 151,
+              "id": 163,
               "name": "ERC20Mintable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1357,
+              "referencedDeclaration": 1369,
               "src": "210:13:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ERC20Mintable_$1357",
+                "typeIdentifier": "t_contract$_ERC20Mintable_$1369",
                 "typeString": "contract ERC20Mintable"
               }
             },
-            "id": 152,
+            "id": 164,
             "nodeType": "InheritanceSpecifier",
             "src": "210:13:1"
           }
         ],
         "contractDependencies": [
-          416,
-          1357,
-          1329,
-          1271,
-          1426
+          1341,
+          1283,
+          428,
+          1369,
+          1438
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 162,
+        "id": 174,
         "linearizedBaseContracts": [
-          162,
-          1357,
-          416,
-          1271,
-          1329,
-          1426
+          174,
+          1369,
+          428,
+          1283,
+          1341,
+          1438
         ],
         "name": "EndlessToken",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 160,
+              "id": 172,
               "nodeType": "Block",
               "src": "297:2:1",
               "statements": []
             },
             "documentation": null,
-            "id": 161,
+            "id": 173,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [
@@ -505,7 +505,7 @@
                   {
                     "argumentTypes": null,
                     "hexValue": "456e646c65737320546f6b656e",
-                    "id": 155,
+                    "id": 167,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -523,7 +523,7 @@
                   {
                     "argumentTypes": null,
                     "hexValue": "454e444c4553",
-                    "id": 156,
+                    "id": 168,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -541,7 +541,7 @@
                   {
                     "argumentTypes": null,
                     "hexValue": "3138",
-                    "id": 157,
+                    "id": 169,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -557,17 +557,17 @@
                     "value": "18"
                   }
                 ],
-                "id": 158,
+                "id": 170,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 154,
+                  "id": 166,
                   "name": "ERC20Detailed",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 1329,
+                  "referencedDeclaration": 1341,
                   "src": "252:13:1",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_ERC20Detailed_$1329_$",
+                    "typeIdentifier": "t_type$_t_contract$_ERC20Detailed_$1341_$",
                     "typeString": "type(contract ERC20Detailed)"
                   }
                 },
@@ -578,25 +578,25 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 153,
+              "id": 165,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "242:2:1"
             },
             "returnParameters": {
-              "id": 159,
+              "id": 171,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "297:0:1"
             },
-            "scope": 162,
+            "scope": 174,
             "src": "230:69:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 163,
+        "scope": 175,
         "src": "170:131:1"
       }
     ],
@@ -606,14 +606,14 @@
     "absolutePath": "/home/opz/Projects/endlessico/contracts/EndlessToken.sol",
     "exportedSymbols": {
       "EndlessToken": [
-        162
+        174
       ]
     },
-    "id": 163,
+    "id": 175,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 146,
+        "id": 158,
         "literals": [
           "solidity",
           "^",
@@ -626,10 +626,10 @@
       {
         "absolutePath": "openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol",
         "file": "openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol",
-        "id": 147,
+        "id": 159,
         "nodeType": "ImportDirective",
-        "scope": 163,
-        "sourceUnit": 1330,
+        "scope": 175,
+        "sourceUnit": 1342,
         "src": "25:71:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -637,10 +637,10 @@
       {
         "absolutePath": "openzeppelin-solidity/contracts/token/ERC20/ERC20Mintable.sol",
         "file": "openzeppelin-solidity/contracts/token/ERC20/ERC20Mintable.sol",
-        "id": 148,
+        "id": 160,
         "nodeType": "ImportDirective",
-        "scope": 163,
-        "sourceUnit": 1358,
+        "scope": 175,
+        "sourceUnit": 1370,
         "src": "97:71:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -651,17 +651,17 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 149,
+              "id": 161,
               "name": "ERC20Detailed",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1329,
+              "referencedDeclaration": 1341,
               "src": "195:13:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ERC20Detailed_$1329",
+                "typeIdentifier": "t_contract$_ERC20Detailed_$1341",
                 "typeString": "contract ERC20Detailed"
               }
             },
-            "id": 150,
+            "id": 162,
             "nodeType": "InheritanceSpecifier",
             "src": "195:13:1"
           },
@@ -669,52 +669,52 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 151,
+              "id": 163,
               "name": "ERC20Mintable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1357,
+              "referencedDeclaration": 1369,
               "src": "210:13:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ERC20Mintable_$1357",
+                "typeIdentifier": "t_contract$_ERC20Mintable_$1369",
                 "typeString": "contract ERC20Mintable"
               }
             },
-            "id": 152,
+            "id": 164,
             "nodeType": "InheritanceSpecifier",
             "src": "210:13:1"
           }
         ],
         "contractDependencies": [
-          416,
-          1357,
-          1329,
-          1271,
-          1426
+          1341,
+          1283,
+          428,
+          1369,
+          1438
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 162,
+        "id": 174,
         "linearizedBaseContracts": [
-          162,
-          1357,
-          416,
-          1271,
-          1329,
-          1426
+          174,
+          1369,
+          428,
+          1283,
+          1341,
+          1438
         ],
         "name": "EndlessToken",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 160,
+              "id": 172,
               "nodeType": "Block",
               "src": "297:2:1",
               "statements": []
             },
             "documentation": null,
-            "id": 161,
+            "id": 173,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [
@@ -723,7 +723,7 @@
                   {
                     "argumentTypes": null,
                     "hexValue": "456e646c65737320546f6b656e",
-                    "id": 155,
+                    "id": 167,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -741,7 +741,7 @@
                   {
                     "argumentTypes": null,
                     "hexValue": "454e444c4553",
-                    "id": 156,
+                    "id": 168,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -759,7 +759,7 @@
                   {
                     "argumentTypes": null,
                     "hexValue": "3138",
-                    "id": 157,
+                    "id": 169,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -775,17 +775,17 @@
                     "value": "18"
                   }
                 ],
-                "id": 158,
+                "id": 170,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 154,
+                  "id": 166,
                   "name": "ERC20Detailed",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 1329,
+                  "referencedDeclaration": 1341,
                   "src": "252:13:1",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_ERC20Detailed_$1329_$",
+                    "typeIdentifier": "t_type$_t_contract$_ERC20Detailed_$1341_$",
                     "typeString": "type(contract ERC20Detailed)"
                   }
                 },
@@ -796,25 +796,25 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 153,
+              "id": 165,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "242:2:1"
             },
             "returnParameters": {
-              "id": 159,
+              "id": 171,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "297:0:1"
             },
-            "scope": 162,
+            "scope": 174,
             "src": "230:69:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 163,
+        "scope": 175,
         "src": "170:131:1"
       }
     ],
@@ -826,14 +826,87 @@
   },
   "networks": {
     "4447": {
-      "events": {},
+      "events": {
+        "0x6ae172837ea30b801fbfcdd4108aa1d5bf8ff775444fd70256b44e6bf3dfc3f6": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "MinterAdded",
+          "type": "event",
+          "signature": "0x6ae172837ea30b801fbfcdd4108aa1d5bf8ff775444fd70256b44e6bf3dfc3f6"
+        },
+        "0xe94479a9f7e1952cc78f2d6baab678adc1b772d936c6583def489e524cb66692": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "MinterRemoved",
+          "type": "event",
+          "signature": "0xe94479a9f7e1952cc78f2d6baab678adc1b772d936c6583def489e524cb66692"
+        },
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Transfer",
+          "type": "event",
+          "signature": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
+        },
+        "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "spender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Approval",
+          "type": "event",
+          "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
+        }
+      },
       "links": {},
-      "address": "0x6e82cc6d4AE338f67F171BF6E13b6ca36a4B5037",
-      "transactionHash": "0x5c569969045f421d0d23fc4fdafb672dad1e21a97245b2acd2a7944ece87c581"
+      "address": "0x5507725b003Bd4200903912BE0B4DeD5aF30d816",
+      "transactionHash": "0x7538e1a152405940f29fe4ae3a16ce6135c5750f90a6e86473d25490663d23a6"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-02-12T04:26:06.358Z",
+  "updatedAt": "2019-02-19T00:21:21.795Z",
   "devdoc": {
     "methods": {
       "allowance(address,address)": {
