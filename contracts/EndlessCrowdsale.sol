@@ -19,17 +19,61 @@ contract EndlessCrowdsale is MintedCrowdsale {
         return token().totalSupply().add(1);
     }
 
+    function getTokenAmount(uint256 weiAmount)
+        external
+        view
+        returns (uint256)
+    {
+        return _getTokenAmount(weiAmount);
+    }
+
     function _getTokenAmount(uint256 weiAmount)
         internal
         view
         returns (uint256)
     {
-        uint256 start = token().totalSupply();
-        uint256 b = start.mul(2).add(1).div(2);
+        uint256 decimals = 1000000000000000000;
+        uint256 scale = 10000;
 
-        uint256 root = sqrt(b.mul(b).add(weiAmount.mul(2))).sub(b);
+        uint256 tokenAmount = getRoot(weiAmount, scale, decimals);
+
+        return tokenAmount;
+    }
+
+    function getLinearCoefficient(uint256 scale, uint256 decimals)
+        private
+        view
+        returns (uint256)
+    {
+        uint256 start = token().totalSupply().mul(decimals);
+        uint256 b = start.mul(2).add(1).div(2).div(scale);
+
+        return b;
+    }
+
+    function getRoot(uint256 weiAmount, uint256 scale, uint256 decimals)
+        private
+        view
+        returns (uint256)
+    {
+        uint256 b = getLinearCoefficient(scale, decimals);
+        uint256 discriminant = getDiscriminant(weiAmount, b, scale, decimals);
+        uint256 root = sqrt(discriminant).sub(b).mul(scale);
 
         return root;
+    }
+
+    function getDiscriminant(
+        uint256 weiAmount,
+        uint256 b,
+        uint256 scale,
+        uint256 decimals
+    )
+        private
+        pure
+        returns (uint256)
+    {
+        return b.mul(b).add(weiAmount.mul(decimals).mul(2).div(scale));
     }
 
     function sqrt(uint256 x) private pure returns (uint256) {
