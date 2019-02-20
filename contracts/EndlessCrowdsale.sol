@@ -9,15 +9,13 @@ contract EndlessCrowdsale is MintedCrowdsale {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
-    constructor (IERC20 token) public Crowdsale(100, msg.sender, token) {}
+    uint256 constant public rateDecimals = 18;
+    uint256 constant private rateDecimalsMultiply = 10 ** rateDecimals;
 
-    function rate() public view returns (uint256) {
-        revert();
-    }
-
-    function getCurrentRate() public view returns (uint256) {
-        return token().totalSupply().add(1);
-    }
+    constructor (IERC20 token)
+        public
+        Crowdsale(1000000000000000000000000, msg.sender, token)
+    {}
 
     function getTokenAmount(uint256 weiAmount)
         external
@@ -32,48 +30,55 @@ contract EndlessCrowdsale is MintedCrowdsale {
         view
         returns (uint256)
     {
-        uint256 decimals = 1000000000000000000;
-        uint256 scale = 10000;
-
-        uint256 tokenAmount = getRoot(weiAmount, scale, decimals);
+        uint256 aInverse = rate().mul(2);
+        uint256 b = getLinearCoefficient(aInverse);
+        uint256 tokenAmount = getRoot(aInverse, b, weiAmount);
 
         return tokenAmount;
     }
 
-    function getLinearCoefficient(uint256 scale, uint256 decimals)
+    function getLinearCoefficient(uint256 aInverse)
         private
         view
         returns (uint256)
     {
-        uint256 start = token().totalSupply().mul(decimals);
-        uint256 b = start.mul(2).add(1).div(2).div(scale);
+        // Adjust for decimal places
+        uint256 start = token().totalSupply().mul(rateDecimalsMultiply);
+        uint256 oneDecimals = rateDecimalsMultiply;
+
+        uint256 b = start.mul(2).add(oneDecimals).div(aInverse);
 
         return b;
     }
 
-    function getRoot(uint256 weiAmount, uint256 scale, uint256 decimals)
-        private
-        view
-        returns (uint256)
-    {
-        uint256 b = getLinearCoefficient(scale, decimals);
-        uint256 discriminant = getDiscriminant(weiAmount, b, scale, decimals);
-        uint256 root = sqrt(discriminant).sub(b).mul(scale);
-
-        return root;
-    }
-
-    function getDiscriminant(
-        uint256 weiAmount,
-        uint256 b,
-        uint256 scale,
-        uint256 decimals
-    )
+    function getRoot(uint256 aInverse, uint256 b, uint256 cNegative)
         private
         pure
         returns (uint256)
     {
-        return b.mul(b).add(weiAmount.mul(decimals).mul(2).div(scale));
+        uint256 discriminant = getDiscriminant(aInverse, b, cNegative);
+
+        // Adjust for decimal places
+        uint256 discriminantDecimals = discriminant.mul(rateDecimalsMultiply);
+
+        uint256 root = sqrt(discriminantDecimals).sub(b).div(2).mul(aInverse);
+
+        // Adjust for decimal places
+        root = root.div(rateDecimalsMultiply);
+
+        return root;
+    }
+
+    function getDiscriminant(uint256 aInverse, uint256 b, uint256 cNegative)
+        private
+        pure
+        returns (uint256)
+    {
+        // Adjust for decimal places
+        uint256 bSquaredDecimals = b.mul(b).div(rateDecimalsMultiply);
+        uint256 cNegativeDecimals = cNegative.mul(rateDecimalsMultiply);
+
+        return bSquaredDecimals.add(cNegativeDecimals.mul(4).div(aInverse));
     }
 
     function sqrt(uint256 x) private pure returns (uint256) {
