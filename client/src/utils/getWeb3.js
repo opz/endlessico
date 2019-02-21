@@ -18,19 +18,19 @@ const getWeb3 = async (resolve, reject) => {
     const web3 = new Web3(window.web3.currentProvider);
     console.log("Injected web3 detected.");
     resolve(web3);
-  }
-
   // Default provider when accounts are not required
-  let defaultNetwork;
-  if (process.env.NODE_ENV === 'production') {
-    defaultNetwork = process.env.REACT_APP_PROD_NETWORK;
   } else {
-    defaultNetwork = process.env.REACT_APP_DEV_NETWORK;
+    let defaultNetwork;
+    if (process.env.NODE_ENV === 'production') {
+      defaultNetwork = process.env.REACT_APP_PROD_NETWORK;
+    } else {
+      defaultNetwork = process.env.REACT_APP_DEV_NETWORK;
+    }
+    const provider = new Web3.providers.HttpProvider(defaultNetwork);
+    const web3 = new Web3(provider);
+    console.log("No web3 instance injected, using default provider.");
+    resolve(web3);
   }
-  const provider = new Web3.providers.HttpProvider(defaultNetwork);
-  const web3 = new Web3(provider);
-  console.log("No web3 instance injected, using default provider.");
-  resolve(web3);
 }
 
 export default () => {
