@@ -224,4 +224,8 @@ class BuyTokens extends Component {
   }
 }
 
-export default withWeb3(true)(withCrowdsale()(withToken()(BuyTokens)));
+export default _.flowRight(
+  withWeb3(true),
+  withCrowdsale(),
+  withToken()
+)(BuyTokens);
