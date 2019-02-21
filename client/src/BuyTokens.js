@@ -28,8 +28,22 @@ class BuyTokens extends Component {
     this.formRef = React.createRef();
   }
 
+  updateTokenStats = async () => {
+    const { web3, token } = this.props;
+
+    const totalSupply = await token.methods.totalSupply().call();
+
+    // Token uses 18 decimal places so use wei conversion for display
+    const tokensSold = parseInt(web3.utils.fromWei(totalSupply, 'ether'))
+      .toLocaleString();
+
+    const symbol = await token.methods.symbol().call();
+
+    this.setState({ symbol, totalSupply, tokensSold });
+  };
+
   async componentDidUpdate(prevProps) {
-    const { web3, accounts, crowdsale, token } = this.props;
+    const { accounts, crowdsale, token } = this.props;
 
     if (accounts !== prevProps.accounts) {
       this.setState({ address: accounts && accounts[0] });
@@ -41,15 +55,7 @@ class BuyTokens extends Component {
     }
 
     if (token !== prevProps.token) {
-      const totalSupply = await token.methods.totalSupply().call();
-
-      // Token uses 18 decimal places so use wei conversion for display
-      const tokensSold = parseInt(web3.utils.fromWei(totalSupply, 'ether'))
-        .toLocaleString();
-
-      const symbol = await token.methods.symbol().call();
-
-      this.setState({ symbol, totalSupply, tokensSold });
+      await this.updateTokenStats();
     }
   }
 
@@ -77,6 +83,8 @@ class BuyTokens extends Component {
       });
 
       this.setState({ value: '' });
+
+      this.updateTokenStats();
     } catch(error) {
       this.setState({ errorMessage: error.message });
     }
@@ -104,7 +112,7 @@ class BuyTokens extends Component {
       </>
     );
 
-    const tokenPrice = totalSupply / rate || totalSupply;
+    const tokenPrice = (totalSupply / (rate || totalSupply)).toFixed(8);
 
     return (
       <Layout web3={web3} accounts={accounts}>
