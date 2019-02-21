@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import withWeb3 from './utils/withWeb3';
 import { withCrowdsale, withToken } from './utils/withContract';
@@ -15,10 +16,11 @@ import PageHeader from './PageHeader';
 class BuyTokens extends Component {
   state = {
     address: '',
-    value: '0.5',
+    amount: '0.5',
     symbol: '',
     rate: '0',
     tokensSold: '0',
+    tokensToBuy: '0',
     loading: false,
     errorMessage: ''
   };
@@ -42,6 +44,23 @@ class BuyTokens extends Component {
     this.setState({ symbol, totalSupply, tokensSold });
   };
 
+  updateTokensToBuy = async () => {
+    const { web3, crowdsale } = this.props;
+    const { amount } = this.state;
+
+    try {
+      const wei = web3.utils.toWei(amount, 'ether');
+      const tokenAmount = await crowdsale.methods.getTokenAmount(wei).call();
+
+      // Token uses 18 decimal places so use wei conversion for display
+      const tokensToBuy = web3.utils.fromWei(tokenAmount, 'ether');
+
+      this.setState({ tokensToBuy });
+    } catch(error) {
+      this.setState({ errorMessage: error.message });
+    }
+  };
+
   async componentDidUpdate(prevProps) {
     const { accounts, crowdsale, token } = this.props;
 
@@ -52,6 +71,9 @@ class BuyTokens extends Component {
     if (crowdsale !== prevProps.crowdsale) {
       const rate = await crowdsale.methods.rate().call();
       this.setState({ rate });
+
+      // Update tokens to buy when crowdsale contract is set
+      this.updateTokensToBuy();
     }
 
     if (token !== prevProps.token) {
@@ -74,15 +96,15 @@ class BuyTokens extends Component {
     this.setState({ loading: true, errorMessage: '' });
 
     const { web3, accounts, crowdsale } = this.props;
-    const { address, value } = this.state;
+    const { address, amount } = this.state;
 
     try {
       await crowdsale.methods.buyTokens(address).send({
         from: accounts[0],
-        value: web3.utils.toWei(value, 'ether')
+        value: web3.utils.toWei(amount, 'ether')
       });
 
-      this.setState({ value: '' });
+      this.setState({ amount: '' });
 
       this.updateTokenStats();
     } catch(error) {
@@ -96,11 +118,12 @@ class BuyTokens extends Component {
     const { web3, accounts, crowdsale } = this.props;
     const {
       address,
-      value,
+      amount,
       symbol,
       rate,
       totalSupply,
       tokensSold,
+      tokensToBuy,
       loading,
       errorMessage
     } = this.state;
@@ -113,6 +136,8 @@ class BuyTokens extends Component {
     );
 
     const tokenPrice = (totalSupply / (rate || totalSupply)).toFixed(8);
+
+    const updateTokensToBuy = _.debounce(this.updateTokensToBuy, 300);
 
     return (
       <Layout web3={web3} accounts={accounts}>
@@ -164,15 +189,28 @@ class BuyTokens extends Component {
                   value={address}
                   onChange={this.onChange}
                 />
-                <Form.Field required>
-                  <label>Amount (ETH)</label>
-                  <Input
-                    label={{ basic: true, content: <>&Xi;</> }}
-                    name="value"
-                    value={value}
-                    onChange={this.onChange}
-                  />
-                </Form.Field>
+                <Form.Group>
+                  <Form.Field required width={8}>
+                    <label>Amount (ETH)</label>
+                    <Input
+                      label={{ basic: true, content: <>&Xi;</> }}
+                      name="amount"
+                      value={amount}
+                      onChange={(event, data) => {
+                        this.onChange(event, data);
+                        updateTokensToBuy();
+                      }}
+                    />
+                  </Form.Field>
+                  <Form.Field width={8}>
+                    <label>Tokens</label>
+                    <Input
+                      label={{ basic: true, content: symbol }}
+                      labelPosition="right"
+                      value={tokensToBuy}
+                    />
+                  </Form.Field>
+                </Form.Group>
                 <Message error header="Error" content={errorMessage} />
                 <Form.Button primary disabled={!crowdsale}>
                   Purchase Tokens
