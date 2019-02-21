@@ -4,7 +4,12 @@ import { Button, Divider, Grid, Header } from 'semantic-ui-react';
 import './PageHeader.css';
 
 export default props => {
-  const { title, subtitle, callToAction, onCallToAction } = props;
+  const {
+    title,
+    subtitle,
+    callToAction,
+    onCallToAction
+  } = props;
 
   return (
     <div className="PageHeader">

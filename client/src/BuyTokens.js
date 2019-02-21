@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import withWeb3 from './utils/withWeb3';
-import withContract from './utils/withContract';
-import { Container, Form, Input, Message } from 'semantic-ui-react';
+import { withCrowdsale, withToken } from './utils/withContract';
 import {
   Container,
   Divider,
@@ -12,7 +11,6 @@ import {
 } from 'semantic-ui-react';
 import Layout from './Layout';
 import PageHeader from './PageHeader';
-import EndlessCrowdsale from './contracts/EndlessCrowdsale.json';
 
 class BuyTokens extends Component {
   state = {
@@ -69,11 +67,11 @@ class BuyTokens extends Component {
 
     this.setState({ loading: true, errorMessage: '' });
 
-    const { web3, accounts, contract } = this.props;
+    const { web3, accounts, crowdsale } = this.props;
     const { address, value } = this.state;
 
     try {
-      await contract.methods.buyTokens(address).send({
+      await crowdsale.methods.buyTokens(address).send({
         from: accounts[0],
         value: web3.utils.toWei(value, 'ether')
       });
@@ -178,4 +176,4 @@ class BuyTokens extends Component {
   }
 }
 
-export default withWeb3(true)(withContract(EndlessCrowdsale)(BuyTokens));
+export default withWeb3(true)(withCrowdsale()(withToken()(BuyTokens)));
