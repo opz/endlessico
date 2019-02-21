@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import EndlessCrowdsale from '../contracts/EndlessCrowdsale.json';
+import EndlessToken from '../contracts/EndlessToken.json';
 
-export default function withContract(Contract) {
+export default function withContract(Contract, propName) {
   return WrappedComponent => {
     return class extends Component {
       state = {
-        contract: null
+        [propName]: null
       }
 
       async componentDidUpdate(prevProps) {
@@ -19,15 +21,23 @@ export default function withContract(Contract) {
             deployedNetwork && deployedNetwork.address,
           );
 
-          this.setState({ contract });
+          this.setState({ [propName]: contract });
         }
       }
 
       render() {
-        const { contract } = this.state;
+        const contractProps = { [propName]: this.state[propName] }; 
 
-        return <WrappedComponent {...this.props} contract={contract} />;
+        return <WrappedComponent {...this.props} {...contractProps} />;
       }
     }
   };
 }
+
+export function withCrowdsale() {
+  return withContract(EndlessCrowdsale, 'crowdsale');
+};
+
+export function withToken() {
+  return withContract(EndlessToken, 'token');
+};
