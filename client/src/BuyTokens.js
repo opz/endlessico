@@ -85,7 +85,7 @@ class BuyTokens extends Component {
   };
 
   render() {
-    const { web3, accounts } = this.props;
+    const { web3, accounts, crowdsale } = this.props;
     const {
       address,
       value,
@@ -166,7 +166,9 @@ class BuyTokens extends Component {
                   />
                 </Form.Field>
                 <Message error header="Error" content={errorMessage} />
-                <Form.Button primary>Purchase Tokens</Form.Button>
+                <Form.Button primary disabled={!crowdsale}>
+                  Purchase Tokens
+                </Form.Button>
               </Form>
             </div>
           </Container>
