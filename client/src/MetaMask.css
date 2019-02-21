@@ -1,0 +1,13 @@
+.MetaMask {
+    background: url('background.jpg') center/cover no-repeat;
+    padding: 10em 0;
+    height: 100vh;
+}
+
+.MetaMask .ui.grid {
+    height: 100%;
+}
+
+.MetaMask+.Footer {
+    margin-top: 0;
+}

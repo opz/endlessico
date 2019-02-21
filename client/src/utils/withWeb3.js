@@ -13,7 +13,8 @@ export default function withWeb3(requireAccounts=false) {
       state = {
         web3: null,
         accounts: null,
-        loading: false
+        loading: false,
+        displayMetaMask: false
       };
 
       async componentDidMount() {
@@ -21,12 +22,15 @@ export default function withWeb3(requireAccounts=false) {
 
         try {
           // Get network provider and web3 instance.
-          const web3 = await getWeb3(requireAccounts);
+          const web3 = await getWeb3();
 
           // Use web3 to get the user's accounts.
           const accounts = web3 && await web3.eth.getAccounts();
 
-          this.setState({ web3, accounts });
+          const accountsEmpty = !accounts || !accounts.length;
+          const displayMetaMask = requireAccounts && accountsEmpty;
+
+          this.setState({ web3, accounts, displayMetaMask });
         } catch (error) {
           // Catch any errors for any of the above operations.
           console.error(error);
@@ -36,11 +40,10 @@ export default function withWeb3(requireAccounts=false) {
       };
 
       render() {
-        const { web3, accounts, loading } = this.state;
+        const { web3, accounts, loading, displayMetaMask } = this.state;
 
-        const hasMetaMask = accounts && accounts.length > 0;
-        if (requireAccounts && !hasMetaMask && !loading) {
-          return <MetaMask />;
+        if (displayMetaMask) {
+          return <MetaMask web3={web3} />;
         }
 
         return (
