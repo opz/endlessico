@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import withWeb3 from './utils/withWeb3';
 import withContract from './utils/withContract';
 import { Container, Form, Input, Message } from 'semantic-ui-react';
+import {
+  Container,
+  Divider,
+  Form,
+  Input,
+  Message,
+  Statistic
+} from 'semantic-ui-react';
 import Layout from './Layout';
 import PageHeader from './PageHeader';
 import EndlessCrowdsale from './contracts/EndlessCrowdsale.json';
@@ -10,6 +18,9 @@ class BuyTokens extends Component {
   state = {
     address: '',
     value: '0.5',
+    symbol: '',
+    rate: '0',
+    tokensSold: '0',
     loading: false,
     errorMessage: ''
   };
@@ -19,11 +30,28 @@ class BuyTokens extends Component {
     this.formRef = React.createRef();
   }
 
-  componentDidUpdate(prevProps) {
-    const { accounts } = this.props;
+  async componentDidUpdate(prevProps) {
+    const { web3, accounts, crowdsale, token } = this.props;
 
     if (accounts !== prevProps.accounts) {
       this.setState({ address: accounts && accounts[0] });
+    }
+
+    if (crowdsale !== prevProps.crowdsale) {
+      const rate = await crowdsale.methods.rate().call();
+      this.setState({ rate });
+    }
+
+    if (token !== prevProps.token) {
+      const totalSupply = await token.methods.totalSupply().call();
+
+      // Token uses 18 decimal places so use wei conversion for display
+      const tokensSold = parseInt(web3.utils.fromWei(totalSupply, 'ether'))
+        .toLocaleString();
+
+      const symbol = await token.methods.symbol().call();
+
+      this.setState({ symbol, totalSupply, tokensSold });
     }
   }
 
@@ -60,7 +88,16 @@ class BuyTokens extends Component {
 
   render() {
     const { web3, accounts } = this.props;
-    const { address, value, loading, errorMessage } = this.state;
+    const {
+      address,
+      value,
+      symbol,
+      rate,
+      totalSupply,
+      tokensSold,
+      loading,
+      errorMessage
+    } = this.state;
 
     const title = (
       <>
@@ -68,6 +105,8 @@ class BuyTokens extends Component {
         NDLESS
       </>
     );
+
+    const tokenPrice = totalSupply / rate || totalSupply;
 
     return (
       <Layout web3={web3} accounts={accounts}>
@@ -79,6 +118,33 @@ class BuyTokens extends Component {
             onCallToAction={this.onCallToAction}
           />
           <Container text>
+            <Statistic.Group size="tiny" widths={3}>
+              <Statistic>
+                <Statistic.Value>
+                  &Xi;{tokenPrice}
+                </Statistic.Value>
+                <Statistic.Label>
+                  Last Token Price
+                </Statistic.Label>
+              </Statistic>
+              <Statistic>
+                <Statistic.Value>
+                  {tokensSold}
+                </Statistic.Value>
+                <Statistic.Label>
+                  Tokens Sold
+                </Statistic.Label>
+              </Statistic>
+              <Statistic>
+                <Statistic.Value>
+                  {symbol}
+                </Statistic.Value>
+                <Statistic.Label>
+                  Symbol
+                </Statistic.Label>
+              </Statistic>
+            </Statistic.Group>
+            <Divider hidden />
             <div ref={this.formRef}>
               <Form
                 loading={loading}
