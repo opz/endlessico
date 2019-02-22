@@ -9,6 +9,7 @@ contract EndlessCrowdsale is MintedCrowdsale {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
+    uint256 constant public minContribution = 1000000000000000;
     uint256 constant public rateDecimals = 18;
     uint256 constant private rateDecimalsMultiply = 10 ** rateDecimals;
 
@@ -23,6 +24,17 @@ contract EndlessCrowdsale is MintedCrowdsale {
         returns (uint256)
     {
         return _getTokenAmount(weiAmount);
+    }
+
+    function _preValidatePurchase(address beneficiary, uint256 weiAmount)
+        internal
+        view
+    {
+        super._preValidatePurchase(beneficiary, weiAmount);
+        require(
+            weiAmount >= minContribution,
+            'Contribution must be at least 0.001 ETH'
+        );
     }
 
     function _getTokenAmount(uint256 weiAmount)

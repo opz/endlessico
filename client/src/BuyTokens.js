@@ -19,6 +19,7 @@ class BuyTokens extends Component {
     amount: '0.5',
     symbol: '',
     rate: '0',
+    minContribution: '0',
     tokensSold: '0',
     tokensToBuy: '0',
     loading: false,
@@ -46,19 +47,29 @@ class BuyTokens extends Component {
 
   updateTokensToBuy = async () => {
     const { web3, crowdsale } = this.props;
-    const { amount } = this.state;
+    const { amount, minContribution } = this.state;
+
+    let wei = '0';
+    let errorMessage = '';
 
     try {
-      const wei = web3.utils.toWei(amount, 'ether');
+      wei = web3.utils.toWei(amount, 'ether');
       const tokenAmount = await crowdsale.methods.getTokenAmount(wei).call();
 
       // Token uses 18 decimal places so use wei conversion for display
       const tokensToBuy = web3.utils.fromWei(tokenAmount, 'ether');
 
+      if (web3.utils.toBN(wei).lt(web3.utils.toBN(minContribution))) {
+        const minContribEther = web3.utils.fromWei(minContribution, 'ether');
+        errorMessage = `Contribution must be at least ${minContribEther}`;
+      }
+
       this.setState({ tokensToBuy });
     } catch(error) {
-      this.setState({ errorMessage: error.message });
+      errorMessage = error.message;
     }
+
+    this.setState({ errorMessage });
   };
 
   async componentDidUpdate(prevProps) {
@@ -70,7 +81,9 @@ class BuyTokens extends Component {
 
     if (crowdsale !== prevProps.crowdsale) {
       const rate = await crowdsale.methods.rate().call();
-      this.setState({ rate });
+      const minContribution = await crowdsale.methods.minContribution().call();
+
+      this.setState({ rate, minContribution });
 
       // Update tokens to buy when crowdsale contract is set
       this.updateTokensToBuy();
