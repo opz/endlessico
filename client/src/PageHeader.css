@@ -2,8 +2,15 @@
     background: url('background.jpg') center/cover no-repeat;
     margin-bottom: 4rem;
     padding: 10em 0;
-    height: 100vh;
     border-bottom: 1px solid rgba(34,36,38,.1);
+}
+
+.PageHeader:not(.fullscreen) {
+    padding-top: 13em;
+}
+
+.PageHeader.fullscreen {
+    height: 100vh;
 }
 
 .PageHeader .ui.grid {

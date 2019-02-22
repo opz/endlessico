@@ -1,0 +1,8 @@
+.Home .PageHeader {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.Home+.Footer {
+    margin-top: 0;
+}

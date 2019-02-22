@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Divider, Grid, Header } from 'semantic-ui-react';
+import classNames from 'classnames';
 
 import './PageHeader.css';
 
@@ -8,11 +9,14 @@ export default props => {
     title,
     subtitle,
     callToAction,
-    onCallToAction
+    onCallToAction,
+    fullscreen
   } = props;
 
+  const classes = classNames('PageHeader', fullscreen && 'fullscreen');
+
   return (
-    <div className="PageHeader">
+    <div className={classes}>
       <Grid verticalAlign="middle" textAlign="center">
         <Grid.Row>
           <Grid.Column>
@@ -29,4 +33,4 @@ export default props => {
       </Grid>
     </div>
   );
-}
+};

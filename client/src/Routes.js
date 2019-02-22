@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Router, Route } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import ReactGA from 'react-ga';
+import Home from './Home';
 import BuyTokens from './BuyTokens';
 
 const history = createHistory();
@@ -18,7 +19,10 @@ class Routes extends Component {
   render() {
     return (
       <Router history={history}>
-        <Route exact path="/" component={BuyTokens} />
+        <>
+          <Route exact path="/" component={Home} />
+          <Route path="/contribute" component={BuyTokens} />
+        </>
       </Router>
     );
   }

@@ -20,3 +20,9 @@
 .Navigation .ui.menu .ui.image {
     height: 1.93333333em;
 }
+
+.Navigation .ui.menu .MenuItemIcon.ui.image {
+    opacity: 0.5;
+    margin-right: 0.5em;
+    height: 1.5em;
+}
