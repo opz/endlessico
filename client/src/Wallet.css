@@ -1,0 +1,23 @@
+.Wallet {
+    background: url('background.jpg') center/cover no-repeat;
+    padding: 10em 0;
+    height: 100vh;
+}
+
+.Wallet .ui.grid {
+    height: 100%;
+}
+
+.Wallet+.Footer {
+    margin-top: 0;
+}
+
+.WalletAddress {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Wallet .ui.card>.content:first-child {
+    padding: 2em 6em;
+    background: rgba(0,0,0,.05);
+}

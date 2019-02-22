@@ -25,7 +25,7 @@ class Navigation extends Component {
   }
 
   render() {
-    const { web3, accounts, logo, children } = this.props;
+    const { web3, logo, children } = this.props;
     const { visible } = this.state;
 
     return (
@@ -33,7 +33,7 @@ class Navigation extends Component {
         <Sidebar.Pushable>
           <Sidebar as={Menu} animation="overlay" vertical visible={visible}>
             <NetworkStatus web3={web3} />
-            <NavigationItems web3={web3} accounts={accounts} />
+            <NavigationItems />
           </Sidebar>
           <Sidebar.Pusher onClick={this.onPusherClick} dimmed={visible}>
             <Menu fixed="top">
@@ -51,7 +51,7 @@ class Navigation extends Component {
                 position="right"
                 minWidth={Responsive.onlyTablet.minWidth}
               >
-                <NavigationItems web3={web3} accounts={accounts} />
+                <NavigationItems />
               </Responsive>
               <Responsive
                 {...Responsive.onlyMobile}

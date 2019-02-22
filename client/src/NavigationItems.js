@@ -3,21 +3,20 @@ import { NavLink } from 'react-router-dom';
 import { Image, Menu } from 'semantic-ui-react';
 
 import coins from './coin-stack.svg';
+import wallet from './wallet.svg';
 
-export default props => {
-  const { web3, accounts } = props;
-
+export default () => {
   let listItems = [
     (
       <Menu.Item key="contribute" as={NavLink} to="/contribute">
         <Image src={coins} className="MenuItemIcon" />Purchase Tokens
       </Menu.Item>
+    ), (
+      <Menu.Item key="wallet" as={NavLink} to="/wallet">
+        <Image src={wallet} className="MenuItemIcon" />View My Wallet
+      </Menu.Item>
     )
   ];
-
-  if (web3 && accounts && accounts.length > 0) {
-    // Add Nav item for viewing your accounts tokens
-  }
 
   return listItems;
 }

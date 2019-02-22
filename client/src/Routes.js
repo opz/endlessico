@@ -4,6 +4,7 @@ import createHistory from 'history/createBrowserHistory';
 import ReactGA from 'react-ga';
 import Home from './Home';
 import BuyTokens from './BuyTokens';
+import Wallet from './Wallet';
 
 const history = createHistory();
 history.listen(location => {
@@ -22,6 +23,7 @@ class Routes extends Component {
         <>
           <Route exact path="/" component={Home} />
           <Route path="/contribute" component={BuyTokens} />
+          <Route path="/wallet" component={Wallet} />
         </>
       </Router>
     );

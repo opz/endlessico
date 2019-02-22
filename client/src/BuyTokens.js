@@ -128,7 +128,7 @@ class BuyTokens extends Component {
   };
 
   render() {
-    const { web3, accounts, crowdsale } = this.props;
+    const { web3, crowdsale } = this.props;
     const {
       address,
       amount,
@@ -153,7 +153,7 @@ class BuyTokens extends Component {
     const updateTokensToBuy = _.debounce(this.updateTokensToBuy, 300);
 
     return (
-      <Layout web3={web3} accounts={accounts}>
+      <Layout web3={web3}>
         <div className="BuyTokens">
           <PageHeader
             title={title}
