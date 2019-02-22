@@ -148,7 +148,9 @@ class BuyTokens extends Component {
       </>
     );
 
-    const tokenPrice = (totalSupply / (rate || totalSupply)).toFixed(8);
+    // The "+" rounds to a maximum number of decimal places
+    // E.g. 0.1 instead of 0.10000000
+    const tokenPrice = +(totalSupply / (rate || totalSupply)).toFixed(8);
 
     const updateTokensToBuy = _.debounce(this.updateTokensToBuy, 300);
 
