@@ -1,0 +1,8 @@
+.Privacy {
+    padding: 6em 0 3em;
+    background: url('background.jpg') center/cover no-repeat fixed;
+}
+
+.Privacy+.Footer {
+    margin-top: 0;
+}

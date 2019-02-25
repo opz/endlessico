@@ -1,0 +1,8 @@
+.Terms {
+    padding: 6em 0 3em;
+    background: url('background.jpg') center/cover no-repeat fixed;
+}
+
+.Terms+.Footer {
+    margin-top: 0;
+}
