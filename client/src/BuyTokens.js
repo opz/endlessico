@@ -12,6 +12,7 @@ import {
 } from 'semantic-ui-react';
 import Layout from './Layout';
 import PageHeader from './PageHeader';
+import Chart from './Chart';
 
 class BuyTokens extends Component {
   state = {
@@ -128,7 +129,7 @@ class BuyTokens extends Component {
   };
 
   render() {
-    const { web3, crowdsale } = this.props;
+    const { web3, token, crowdsale } = this.props;
     const {
       address,
       amount,
@@ -232,6 +233,8 @@ class BuyTokens extends Component {
                 </Form.Button>
               </Form>
             </div>
+            <Divider hidden section />
+            <Chart web3={web3} token={token} />
           </Container>
         </div>
       </Layout>
