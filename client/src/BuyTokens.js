@@ -203,7 +203,7 @@ class BuyTokens extends Component {
             <List bulleted size="small">
               <List.Item>Enter the address you wish your tokens to be sent to.</List.Item>
               <List.Item>Enter the amount of ETH you wish to contribute.</List.Item>
-              <List.Item>Check the number of tokens you will receive for your contribution.</List.Item>
+              <List.Item>Submit the form and confirm the MetaMask transaction to receive your tokens.</List.Item>
             </List>
             <Divider hidden />
             <div ref={this.formRef}>
