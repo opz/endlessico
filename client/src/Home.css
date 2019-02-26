@@ -2,3 +2,9 @@
     font-size: 0.667rem;
     padding: .75em 1.5em;
 }
+
+@media only screen and (max-width: 767px) {
+    .Home .ui.items:not(.unstackable)>.item>.image {
+        width: 175px!important;
+    }
+}

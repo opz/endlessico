@@ -1,0 +1,13 @@
+@media only screen and (max-width: 767px) {
+    .BuyTokens .ui.tiny.statistics .statistic>.value {
+        font-size: 1rem!important;
+    }
+
+    .BuyTokens .ui.statistics .statistic>.label {
+        font-size: 0.667em;
+    }
+
+    .ui.form:not(.unstackable) .fields:not(.unstackable)>.field {
+        margin-bottom: 1em;
+    }
+}

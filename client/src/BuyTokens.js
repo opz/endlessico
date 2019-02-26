@@ -17,6 +17,8 @@ import Layout from './Layout';
 import PageHeader from './PageHeader';
 import Chart from './Chart';
 
+import './BuyTokens.css';
+
 class BuyTokens extends Component {
   state = {
     address: '',

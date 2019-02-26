@@ -26,3 +26,7 @@
     margin-right: 0.5em;
     height: 1.5em;
 }
+
+.Navigation .ui.vertical.menu .MenuItemIcon.ui.image {
+    display: inline-block;
+}
