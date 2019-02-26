@@ -6,8 +6,11 @@ import {
   Container,
   Divider,
   Form,
+  Header,
   Input,
+  List,
   Message,
+  Segment,
   Statistic
 } from 'semantic-ui-react';
 import Layout from './Layout';
@@ -160,37 +163,46 @@ class BuyTokens extends Component {
         <div className="BuyTokens">
           <PageHeader
             title={title}
-            subtitle="The ICO that never ends"
+            subtitle="Decentralized valueless tokens"
             callToAction="Purchase Tokens"
             onCallToAction={this.onCallToAction}
           />
           <Container text>
-            <Statistic.Group size="tiny" widths={3}>
-              <Statistic>
-                <Statistic.Value>
-                  &Xi;{tokenPrice}
-                </Statistic.Value>
-                <Statistic.Label>
-                  Last Token Price
-                </Statistic.Label>
-              </Statistic>
-              <Statistic>
-                <Statistic.Value>
-                  {tokensSold}
-                </Statistic.Value>
-                <Statistic.Label>
-                  Tokens Sold
-                </Statistic.Label>
-              </Statistic>
-              <Statistic>
-                <Statistic.Value>
-                  {symbol}
-                </Statistic.Value>
-                <Statistic.Label>
-                  Symbol
-                </Statistic.Label>
-              </Statistic>
-            </Statistic.Group>
+            <Segment>
+              <Statistic.Group size="tiny" widths={3}>
+                <Statistic>
+                  <Statistic.Value>
+                    &Xi;{tokenPrice}
+                  </Statistic.Value>
+                  <Statistic.Label>
+                    Last Token Price
+                  </Statistic.Label>
+                </Statistic>
+                <Statistic>
+                  <Statistic.Value>
+                    {tokensSold}
+                  </Statistic.Value>
+                  <Statistic.Label>
+                    Tokens Sold
+                  </Statistic.Label>
+                </Statistic>
+                <Statistic>
+                  <Statistic.Value>
+                    {symbol}
+                  </Statistic.Value>
+                  <Statistic.Label>
+                    Symbol
+                  </Statistic.Label>
+                </Statistic>
+              </Statistic.Group>
+            </Segment>
+            <Divider hidden section />
+            <Header as="h4">Instructions</Header>
+            <List bulleted size="small">
+              <List.Item>Enter the address you wish your tokens to be sent to.</List.Item>
+              <List.Item>Enter the amount of ETH you wish to contribute.</List.Item>
+              <List.Item>Check the number of tokens you will receive for your contribution.</List.Item>
+            </List>
             <Divider hidden />
             <div ref={this.formRef}>
               <Form

@@ -13,13 +13,13 @@
     height: 100vh;
 }
 
-.PageHeader .ui.grid {
+.PageHeader .ui.grid,
+.PageHeader .ui.container {
     height: 100%;
 }
 
 .PageHeader h1.ui.header {
     font-size: 6rem;
-    font-weight: 400;
 }
 
 .PageHeader h1.ui.header .sub.header {

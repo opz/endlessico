@@ -14,6 +14,23 @@ body {
     color: #1d1b1b;
 }
 
+h1.ui.header {
+    font-size: 3rem;
+}
+
+h1.ui.header .sub.header {
+    font-size: 1.5rem;
+}
+
+h1.ui.header,
+h3.ui.header {
+    font-weight: 400;
+}
+
+h4.ui.header {
+    font-weight: 700;
+}
+
 .title.ui.header {
     letter-spacing: 0.15em;
 }

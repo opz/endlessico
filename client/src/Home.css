@@ -1,8 +1,4 @@
-.Home .PageHeader {
-    margin-bottom: 0;
-    border-bottom: none;
-}
-
-.Home+.Footer {
-    margin-top: 0;
+.Home .ui.card>.extra {
+    font-size: 0.667rem;
+    padding: .75em 1.5em;
 }
