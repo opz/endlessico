@@ -33,7 +33,11 @@ export default () => {
                   <List.Item>
                     <List.Icon name="globe" />
                     <List.Content>
-                      <a href="http://willshahda.com">
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="http://willshahda.com"
+                      >
                         willshahda.com
                       </a>
                     </List.Content>
@@ -41,7 +45,11 @@ export default () => {
                   <List.Item>
                     <List.Icon name="marker" />
                     <List.Content>
-                      <a href="https://goo.gl/maps/W9ifePppaNm">
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://goo.gl/maps/W9ifePppaNm"
+                      >
                         223 Bedford Ave #71, Brooklyn, NY 11211
                       </a>
                     </List.Content>
@@ -69,7 +77,13 @@ export default () => {
                 <List>
                   <List.Item>
                     <List.Content>
-                      <NavLink exact to="/">About</NavLink>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={process.env.PUBLIC_URL + '/Whitepaper.pdf'}
+                      >
+                        Whitepaper
+                      </a>
                     </List.Content>
                   </List.Item>
                   <List.Item>
