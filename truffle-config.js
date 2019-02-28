@@ -44,7 +44,8 @@ module.exports = {
       provider: function() {
         return new HDWalletProvider(mnemonic, liveNetwork);
       },
-      network_id: liveNetworkId
+      network_id: liveNetworkId,
+      gasPrice: 10000000000
     }
   }
 };
