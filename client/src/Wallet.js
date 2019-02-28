@@ -29,13 +29,13 @@ class Wallet extends Component {
         const tkns = web3.utils.fromWei(tknbits, 'ether');
 
         const amount = parseFloat(tkns).toLocaleString();
-        this.setState({ amount });
+
+        const symbol = await token.methods.symbol().call();
+
+        this.setState({ amount, symbol });
       } catch(error) {
         console.error(error);
       }
-
-      const symbol = await token.methods.symbol().call();
-      this.setState({ symbol });
     }
   }
 

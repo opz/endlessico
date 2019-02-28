@@ -40,15 +40,19 @@ class BuyTokens extends Component {
   updateTokenStats = async () => {
     const { web3, token } = this.props;
 
-    const totalSupply = await token.methods.totalSupply().call();
+    try {
+      const totalSupply = await token.methods.totalSupply().call();
 
-    // Token uses 18 decimal places so use wei conversion for display
-    const tokensSold = parseInt(web3.utils.fromWei(totalSupply, 'ether'))
-      .toLocaleString();
+      // Token uses 18 decimal places so use wei conversion for display
+      const tokensSold = parseInt(web3.utils.fromWei(totalSupply, 'ether'))
+        .toLocaleString();
 
-    const symbol = await token.methods.symbol().call();
+      const symbol = await token.methods.symbol().call();
 
-    this.setState({ symbol, totalSupply, tokensSold });
+      this.setState({ symbol, totalSupply, tokensSold });
+    } catch(error) {
+      this.setState({ errorMessage: error.message });
+    }
   };
 
   updateTokensToBuy = async () => {
@@ -86,13 +90,17 @@ class BuyTokens extends Component {
     }
 
     if (crowdsale !== prevProps.crowdsale) {
-      const rate = await crowdsale.methods.rate().call();
-      const minContribution = await crowdsale.methods.minContribution().call();
+      try {
+        const rate = await crowdsale.methods.rate().call();
+        const minContribution = await crowdsale.methods.minContribution().call();
 
-      this.setState({ rate, minContribution });
+        this.setState({ rate, minContribution });
+      } catch(error) {
+        this.setState({ errorMessage: error.message });
+      }
 
       // Update tokens to buy when crowdsale contract is set
-      this.updateTokensToBuy();
+      await this.updateTokensToBuy();
     }
 
     if (token !== prevProps.token) {

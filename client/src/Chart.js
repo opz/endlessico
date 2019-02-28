@@ -10,9 +10,13 @@ class Chart extends Component {
     const { token } = this.props;
 
     if (token !== prevProps.token) {
-      const totalSupply = await token.methods.totalSupply().call();
-      const pointData = this.createData(totalSupply, 16);
-      this.setState({ pointData });
+      try {
+        const totalSupply = await token.methods.totalSupply().call();
+        const pointData = this.createData(totalSupply, 16);
+        this.setState({ pointData });
+      } catch(error) {
+        console.error(error);
+      }
     }
   }
 
