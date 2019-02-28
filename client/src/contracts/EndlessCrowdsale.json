@@ -7725,6 +7725,12 @@
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
   "networks": {
+    "1": {
+      "events": {},
+      "links": {},
+      "address": "0xd426B3ea5Ed6397f4333f674cC5CaBf2C33DdA61",
+      "transactionHash": "0xba1ab55f6aca55a19e98911fc0e74c4f73cbc0973d154c4b7b2aa24bd0749dac"
+    },
     "3": {
       "events": {},
       "links": {},
@@ -7768,7 +7774,7 @@
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-02-28T00:48:43.169Z",
+  "updatedAt": "2019-02-28T04:06:04.353Z",
   "devdoc": {
     "methods": {
       "buyTokens(address)": {
