@@ -1,0 +1,26 @@
+{
+  "name": "endlessico",
+  "version": "1.0.0",
+  "description": "Requires the following environment variables for truffle migrations: * ETH_WALLET_MNEMONIC * ETH_TEST_NETWORK * ETH_TEST_NETWORK_ID * ETH_LIVE_NETWORK * ETH_LIVE_NETWORK_ID",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opz/endlessico.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/opz/endlessico/issues"
+  },
+  "homepage": "https://github.com/opz/endlessico#readme",
+  "dependencies": {
+    "openzeppelin-solidity": "^2.3.0",
+    "truffle-hdwallet-provider": "^1.0.10"
+  }
+}

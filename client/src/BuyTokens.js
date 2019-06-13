@@ -44,7 +44,7 @@ class BuyTokens extends Component {
       const totalSupply = await token.methods.totalSupply().call();
 
       // Token uses 18 decimal places so use wei conversion for display
-      const tokensSold = parseInt(web3.utils.fromWei(totalSupply, 'ether'))
+      const tokensSold = parseInt(web3.utils.fromWei(totalSupply.toString(), 'ether'))
         .toLocaleString();
 
       const symbol = await token.methods.symbol().call();
@@ -67,10 +67,10 @@ class BuyTokens extends Component {
       const tokenAmount = await crowdsale.methods.getTokenAmount(wei).call();
 
       // Token uses 18 decimal places so use wei conversion for display
-      const tokensToBuy = web3.utils.fromWei(tokenAmount, 'ether');
+      const tokensToBuy = web3.utils.fromWei(tokenAmount.toString(), 'ether');
 
       if (web3.utils.toBN(wei).lt(web3.utils.toBN(minContribution))) {
-        const minContribEther = web3.utils.fromWei(minContribution, 'ether');
+        const minContribEther = web3.utils.fromWei(minContribution.toString(), 'ether');
         errorMessage = `Contribution must be at least ${minContribEther}`;
       }
 

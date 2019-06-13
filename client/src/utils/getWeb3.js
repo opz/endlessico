@@ -1,36 +1,24 @@
 import Web3 from "web3";
+import Squarelink from 'squarelink';
 
 const getWeb3 = async (resolve, reject) => {
-  // Modern dapp browsers...
-  if (window.ethereum) {
-    const web3 = new Web3(window.ethereum);
-    try {
-      // Request account access if needed
-      await window.ethereum.enable();
-      // Accounts now exposed
-      resolve(web3);
-    } catch (error) {
-      reject(error);
-    }
-  // Legacy dapp browsers...
-  } else if (window.web3) {
-    // Use Mist/MetaMask's provider.
-    const web3 = new Web3(window.web3.currentProvider);
-    console.log("Injected web3 detected.");
-    resolve(web3);
-  // Default provider when accounts are not required
-  } else {
-    let defaultNetwork;
+  // Squarelink provider
+  if (typeof getWeb3.web3 === 'undefined') {
+    let network;
+
     if (process.env.NODE_ENV === 'production') {
-      defaultNetwork = process.env.REACT_APP_PROD_NETWORK;
+      network = 'mainnet';
     } else {
-      defaultNetwork = process.env.REACT_APP_DEV_NETWORK;
+      network = 'ropsten';
     }
-    const provider = new Web3.providers.HttpProvider(defaultNetwork);
-    const web3 = new Web3(provider);
-    console.log("No web3 instance injected, using default provider.");
-    resolve(web3);
+
+    const clientId = process.env.REACT_APP_SQUARELINK_CLIENT_ID;
+    const sqlk = new Squarelink(clientId, network);
+    const web3 = new Web3(sqlk.getProvider());
+    getWeb3.web3 = web3;
   }
+
+  resolve(getWeb3.web3);
 }
 
 export default () => {

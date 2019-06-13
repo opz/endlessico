@@ -47,5 +47,10 @@ module.exports = {
       network_id: liveNetworkId,
       gasPrice: 10000000000
     }
+  },
+  compilers: {
+    solc: {
+      version: "0.5.2"
+    }
   }
 };

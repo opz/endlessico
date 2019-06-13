@@ -27,7 +27,7 @@ class Chart extends Component {
 
     const { web3 } = this.props;
 
-    const xEnd = web3.utils.fromWei(totalSupply, 'ether');
+    const xEnd = web3.utils.fromWei(totalSupply.toString(), 'ether');
 
     return Array.from(Array(numPoints).keys()).map(index => {
       const x = xEnd * index / (numPoints - 1);
